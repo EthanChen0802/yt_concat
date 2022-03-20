@@ -12,10 +12,11 @@ class DownloadCaptions(Step):
 
             try:
                 source = YouTube(url)
-                en_caption = source.captions.get_by_language_code('a.en')
+                en_caption = source.captions['a.en']
                 en_caption_convert_to_srt = (en_caption.generate_srt_captions())
+                print('Downloading captions from url: ', url)
             except (KeyError, AttributeError):
-                print('Error when downloading caption for ', url)
+                print('Error when downloading caption from: ', url)
                 continue
 
             text_file = open(utils.get_caption_filepath(url) + '.txt', "w", encoding='utf-8')
