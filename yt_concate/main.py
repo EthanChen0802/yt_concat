@@ -1,8 +1,11 @@
-from yt_concate.pipline.steps.get_video_list import GetVideoList
-from yt_concate.pipline.steps.step import StepException
 from yt_concate.pipline.pipline import Pipeline
+from yt_concate.pipline.steps.preflight import PreFlight
+from yt_concate.pipline.steps.get_video_list import GetVideoList
+from yt_concate.pipline.steps.download_caption import DownloadCaptions
+from yt_concate.pipline.steps.postflight import PostFlight
+from yt_concate.utils import Utils
 
-CHANNEL_ID = 'UCVGd0u4nxuFzaXgflOoikaA'
+CHANNEL_ID = 'UC-3sBKh8YYbG2KyVHnSyA1A'
 
 
 def main():
@@ -11,11 +14,15 @@ def main():
     }
 
     steps = [
-        GetVideoList()
+        PreFlight(),
+        GetVideoList(),
+        DownloadCaptions(),
+        PostFlight()
     ]
 
+    utils = Utils()
     p = Pipeline(steps)
-    p.run(inputs)
+    p.run(inputs, utils)
 
 
 if __name__ == '__main__':
