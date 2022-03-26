@@ -10,9 +10,9 @@ class GetVideoList(Step):
     def process(self, data, inputs, utils):
         channel_id = inputs['channel_id']
 
-        #  檢查檔案是否已經存在了，存在就直接讀取檔案的video list
+        #  檢查影片清單檔是否已經存在了，存在就直接讀取檔案的video list
         if utils.video_list_file_exists(channel_id):
-            print('found a existing video list file for this channel id : ' + channel_id)
+            print('Found a existing video list file for this channel id : ' + channel_id)
             return self.read_file(utils.get_video_list_filepath(channel_id))
 
         base_video_url = 'https://www.youtube.com/watch?v='
@@ -36,7 +36,7 @@ class GetVideoList(Step):
             except KeyError:
                 break
 
-        # video清單寫入檔案
+        # video List 寫入檔案
         self.write_to_file(video_links, utils.get_video_list_filepath(channel_id))
         return video_links
 
