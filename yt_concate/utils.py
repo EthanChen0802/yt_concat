@@ -20,4 +20,4 @@ class Utils:
         return os.path.exists(path) and os.path.getsize(path) > 0
 
     def caption_file_exists(self, yt):  # 檢查字幕檔是否已經存在
-        return os.path.exists(yt.caption_filepath + '.txt') and os.path.getsize(yt.caption_filepath + '.txt') > 0  #
+        return os.path.exists(yt.caption_filepath) and os.path.getsize(yt.caption_filepath) > 0  #

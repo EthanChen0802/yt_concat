@@ -19,7 +19,7 @@ class DownloadCaptions(Step):
                 print('Error when downloading caption from: ', yt.url)
                 continue
 
-            text_file = open(yt.caption_filepath + '.txt', "w", encoding='utf-8')
+            text_file = open(yt.caption_filepath, "w", encoding='utf-8')
             text_file.write(en_caption_convert_to_srt)
             text_file.close()
 
