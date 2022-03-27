@@ -7,7 +7,7 @@ class YT:
         self.url = url
         self.id = url.split("watch?v=")[-1]  # 影片的id(作為字幕檔的檔名)
         self.caption_filepath = os.path.join(CAPTION_DIR, self.id) + '.txt'  # 字幕檔存放路徑
-        self.video_filepath = os.path.join(VIDEOS_DIR, self.id)  # 影片檔存放路徑
+        self.video_filepath = os.path.join(VIDEOS_DIR, self.id) + '.mp4'  # 影片檔存放路徑
         self.captions = None
 
     def __str__(self):
