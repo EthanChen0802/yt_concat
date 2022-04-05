@@ -1,5 +1,5 @@
 import os
-from yt_concate.settings import DOWNLOADS_DIR, VIDEOS_DIR, CAPTION_DIR
+from yt_concate.settings import DOWNLOADS_DIR, VIDEOS_DIR, CAPTION_DIR, OUTPUT_DIR
 
 
 # noinspection PyMethodMayBeStatic
@@ -11,6 +11,7 @@ class Utils:
         os.makedirs(DOWNLOADS_DIR, exist_ok=True)
         os.makedirs(VIDEOS_DIR, exist_ok=True)
         os.makedirs(CAPTION_DIR, exist_ok=True)
+        os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     def get_video_list_filepath(self, channel_id):  # 影片清單檔存放路徑
         return os.path.join(DOWNLOADS_DIR, channel_id + '.txt')
@@ -24,3 +25,7 @@ class Utils:
 
     def video_file_exists(self, yt):  # 檢查影片檔是否已經存在
         return os.path.exists(yt.video_filepath) and os.path.getsize(yt.video_filepath) > 0  #
+
+    def get_output_filepath(self, channel_id, search_word):
+        filename = f'{channel_id}_{search_word}.mp4'
+        return os.path.join(OUTPUT_DIR, filename)

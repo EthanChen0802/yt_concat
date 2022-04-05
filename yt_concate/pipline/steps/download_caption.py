@@ -12,7 +12,7 @@ class DownloadCaptions(Step):
                 continue
             try:
                 source = YouTube(yt.url)
-                en_caption = source.captions['a.en']
+                en_caption = source.captions.get_by_language_code('en')
                 en_caption_convert_to_srt = (en_caption.generate_srt_captions())
                 print('Downloading captions from url: ', yt.url)
             except (KeyError, AttributeError):

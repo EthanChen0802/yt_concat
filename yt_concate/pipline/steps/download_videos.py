@@ -7,7 +7,7 @@ class DownloadVideos(Step):
     def process(self, data, inputs, utils):
         # 將youtube url list 轉成 set, 排除重複的影片網址
         yt_set = set([found.yt for found in data])
-        print(f"Total {len(yt_set)} videos to download")
+        print(f"{len(yt_set)} videos to download in total")
 
         for yt in yt_set:
             url = yt.url

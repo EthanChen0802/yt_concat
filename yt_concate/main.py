@@ -6,16 +6,18 @@ from yt_concate.pipline.steps.download_caption import DownloadCaptions
 from yt_concate.pipline.steps.read_caption import ReadCaption
 from yt_concate.pipline.steps.search import Search
 from yt_concate.pipline.steps.download_videos import DownloadVideos
+from yt_concate.pipline.steps.edit_video import EditVideo
 from yt_concate.pipline.steps.postflight import PostFlight
 from yt_concate.utils import Utils
 
-CHANNEL_ID = 'UCVXM96yuiXY3ZT73Dy8HgCA'
+CHANNEL_ID = 'UCgNg3vwj3xt7QOrcIDaHdFg'
 
 
 def main():
     inputs = {
         'channel_id': CHANNEL_ID,
-        'search_word': 'fabulous'
+        'search_word': 'fabulous',
+        'limits': 3
     }
 
     steps = [
@@ -26,6 +28,7 @@ def main():
         ReadCaption(),
         Search(),
         DownloadVideos(),
+        EditVideo(),
         PostFlight()
     ]
 
